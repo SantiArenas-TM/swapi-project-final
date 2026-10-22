@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <a class="back" href="index.html">← Volver a la lista</a>
+        <button id="back-link" type="button" onclick="history.back()">Regresar</button>
         <h1>Detalles del personaje</h1>
     </header>
 
@@ -20,8 +20,7 @@
         <p id="message" role="status"></p>
         <div id="spinner" class="spinner" hidden></div>
 
-        <section id="character-details" aria-label="Personaje"></section>
-        <section id="episodes" aria-label="Episodios"></section>
+        <div id="character-details"></div>
     </main>
 </body>
 
