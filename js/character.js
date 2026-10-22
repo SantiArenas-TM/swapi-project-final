@@ -18,7 +18,7 @@ function createCharacterInfo(character, image, id) {
       ${imageHtml}
       <div class="info">
         <h2>${name}</h2>
-        <p><strong>Año de cumpleaños</strong> ${character.properties.birth_year || "Sin dato"}</p>
+        <p><strong>Año de Nacimiento: </strong> ${character.properties.birth_year || "Sin dato"}</p>
         <p><strong>Género</strong> ${character.properties.gender || "Sin dato"}</p>
         <p><strong>Altura</strong> ${character.properties.height || "Sin dato"}</p>
       </div>

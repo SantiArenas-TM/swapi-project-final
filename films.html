@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Películas</title>
+    <link rel="stylesheet" href="css/films.css" />
+    <script src="js/api.js" defer></script>
+    <script src="js/films.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <a id="back-link" class="back" href="character.html">← Volver al personaje</a>
+        <h1>Películas</h1>
+    </header>
+
+    <main>
+        <p id="message" role="status"></p>
+        <div id="spinner" class="spinner" hidden></div>
+
+        <ul id="films" aria-label="Películas"></ul>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<<<<<<< Updated upstream
+=======
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWAPI</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/api.js" defer></script>
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Star Wars</h1>
+        <p>Personajes de Películas.</p>
+    </header>
+
+    <main>
+        <!-- Buscador -->
+        <div class="search" role="search">
+            <label for="search-input">Buscar personaje</label>
+            <input id="search-input" type="search" placeholder="Ej: Luke, Leia, Yoda..." maxlength="50" />
+            <button id="search-button" type="button">Buscar</button>
+        </div>
+
+        <!-- Estado -->
+        <p id="message" role="status"></p>
+        <p id="result-count" role="status"></p>
+        <div id="spinner" class="spinner" hidden></div>
+
+        <!-- Lista de personajes -->
+        <div id="content" aria-label="Lista de personajes"></div>
+    </main>
+</body>
+
+</html>
+>>>>>>> Stashed changes
