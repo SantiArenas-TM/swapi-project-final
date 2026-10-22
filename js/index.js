@@ -10,10 +10,12 @@ function showMessage(text, isError = false) {
     message.classList.toggle("error", isError);
 }
 
-// Función para crear la tarjeta del personaje
+// Función para crear la tarjeta del personaje con sus datos
 function createCard(character, image) {
     const name = character.properties.name;
     const gender = character.properties.gender || "Sin dato";
+    const birthYear = character.properties.birth_year || "Sin dato";
+    const height = character.properties.height || "Sin dato";
     const imageHtml = image ?
         `<img src="${image}" alt="${name}">` :
         `<p>Sin imagen</p>`;
@@ -25,17 +27,19 @@ function createCard(character, image) {
                 <div class="container">
                     <h2>${name}</h2>
                     <p>Género: ${gender}</p>
+                    <p>Año de Nacimiento: ${birthYear}</p>
+                    <p>Altura: ${height}</p>
                 </div>
             </article>
         </a>
     `;
 }
 
-// Función para poner todas las tarjetas de todos los personajes
-async function showCharacters(results) {
+// Función para poner todas las tarjetas de los personajes
+async function showCharacters(characters) {
     let html = "";
 
-    for (const character of results) {
+    for (const character of characters) {
         let image = "";
         const imageResponse = await getImage(character.uid);
 
@@ -50,12 +54,48 @@ async function showCharacters(results) {
     cardContainer.innerHTML = html;
 }
 
-// Función para buscar los personajes por medio del nombre
-async function runSearch(name) {
+// Función para empezar a cargar: limpia la pantalla y muestra el spinner
+function startLoading(text) {
     cardContainer.innerHTML = "";
     resultCount.textContent = "";
     spinner.hidden = false;
-    showMessage("Buscando personajes...");
+    showMessage(text);
+}
+
+// Función para cargar todos los personajes al abrir la página
+async function loadAllCharacters() {
+    startLoading("Cargando personajes...");
+
+    try {
+        const response = await getAllCharacters();
+
+        if (!response.ok) {
+            showMessage(
+                `El servidor respondió ${response.status}. No se pudieron cargar los personajes.`,
+                true,
+            );
+            return;
+        }
+
+        const data = await response.json();
+        const characters = data.results;
+
+        resultCount.textContent = `${characters.length} personajes`;
+        await showCharacters(characters);
+        showMessage("");
+    } catch (error) {
+        showMessage(
+            "No hay conexión con el servidor. Revise su internet e intente de nuevo.",
+            true,
+        );
+    } finally {
+        spinner.hidden = true;
+    }
+}
+
+// Función para buscar los personajes por medio del nombre
+async function runSearch(name) {
+    startLoading("Buscando personajes...");
 
     try {
         const response = await searchCharacters(name);
@@ -100,4 +140,5 @@ searchButton.addEventListener("click", () => {
     }
 });
 
-showMessage("Escriba el nombre de un personaje para buscar.");
+// Al abrir la página se ven todas las tarjetas
+loadAllCharacters();

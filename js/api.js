@@ -6,12 +6,17 @@ function searchCharacters(name) {
   return fetch(`${PEOPLE_API}/?name=${name}`);
 }
 
-// Función para traer u obtener el personaje por su id
+// Función para traer todos los personajes con sus datos
+function getAllCharacters() {
+  return fetch(`${PEOPLE_API}/?page=1&limit=100&expanded=true`);
+}
+
+// Función para traer el personaje por su id
 function getCharacter(uid) {
   return fetch(`${PEOPLE_API}/${uid}`);
 }
 
-// Función para trae la imagen de un personaje por su número
+// Función para traer la imagen de un personaje por su número
 function getImage(uid) {
   return fetch(`${IMAGE_API}/${uid}.json`);
 }

@@ -2,17 +2,12 @@
 <html lang="es">
 
 <head>
-
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SWAPI</title>
     <link rel="stylesheet" href="css/index.css" />
     <script src="js/api.js" defer></script>
     <script src="js/index.js" defer></script>
-
-
-
 </head>
 
 <body>
@@ -27,7 +22,6 @@
             <label for="search-input">Buscar personaje</label>
             <input id="search-input" type="search" placeholder="Ej: Luke, Leia, Yoda..." maxlength="50" />
             <button id="search-button" type="button">Buscar</button>
-            <button id="clear-button" type="button">Limpiar</button>
         </div>
 
         <!-- Estado -->
@@ -37,13 +31,6 @@
 
         <!-- Lista de personajes -->
         <div id="content" aria-label="Lista de personajes"></div>
-
-        <!-- Paginación -->
-        <nav class="pagination" aria-label="Paginación">
-            <button id="prev" type="button">Anterior</button>
-            <span id="page-number"></span>
-            <button id="next" type="button">Siguiente</button>
-        </nav>
     </main>
 </body>
 
